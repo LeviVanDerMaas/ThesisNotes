@@ -1,0 +1,6 @@
+For planning we use the Obsidian "Tasks" community plugin. A simple markdown signifier `- [ ] ` at the start of a line  in *any* note turns that line into a task, then text after that is the description of the task; a task can be marked as done by inserting an `x` between the brackets. Data can be added to tasks by using certain emoji's, e.g.  `📅 yyyy-mm-dd` specifies a due date and ⏫, 🔼,  , 🔽, ⏬ specify priority of the task. There are many kinds of data to add, but we will most commonly use due date, scheduled date (⏳) and priority indicators. 
+We use the date indicators generally as follows:
+- ⏳ Means we should aim to begin around or do the task on the specified day.
+- 📅 Is generally used to specify
+
+The [[Task Overview]] provides different overviews of all pending tasks. In most markdown readers they will just render as code blocks with some query language, but in Obsidian with the Tasks plugin enabled they instead dynamically render a list of tasks specified by and sorted using the query in the block. So this file is mainly a convenient way to get a quick overview of everything that needs doing and our general planning across all categories. We maintain the actual planning for different things in other files in this directory.
