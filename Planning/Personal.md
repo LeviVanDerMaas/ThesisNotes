@@ -4,7 +4,7 @@ All my personal planning, that is, any tasks that I set for myself, goes here. T
 	- Make a plan (which is this)
 	- Make some sort of centralized collection for all thesis related files (onedrive with links to git repos?)
 
-- [ ] Get started on XoshiroRandom  ChaCha toy project 🛫 2025-12-03
+- [x] Get started on XoshiroRandom  ChaCha toy project 🛫 2025-12-03 ✅ 2025-12-16
 
 - [ ] Finish Implementing ChaCha20 into XoshiroRandom 📅 2026-01-13
 

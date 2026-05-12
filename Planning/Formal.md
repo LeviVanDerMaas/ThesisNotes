@@ -6,7 +6,7 @@ Planning for all key moments of thesis that have some sort of formal deadlines (
 	- It should especially be discussed in light of the [thesis assessment rubrics](https://brightspace.tudelft.nl/d2l/le/content/492869/viewContent/3749921/View)
 	- Similarly, based on my preparations of this presentation, I should also be able to formulate whether I think the goals as formulated in the thesis proposal are still valid or not; of course I should then discuss this with the supervisors and hear their opinions on it. Should a change be necessary, I think it must be reuploaded to MaRe?
 
-- [ ] Thesis Committee Form ⏳ 2026-01-17 📅 2026-03-17
+- [ ] Thesis Committee Form ⏳ 2026-01-17 📅 2026-03-17 🔼 
 	- Must be **submitted at least three months before** the planned defence date, MaRe. It is recommended this is done **shortly after the midterm meeting**.
 	- *But you should probably start fixing for a member of an external group at least two month in advance.*
 	- Must have at least 2 core members, may have 3. All from TUD research groups.
