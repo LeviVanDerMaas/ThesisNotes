@@ -6,10 +6,7 @@ All my personal planning, that is, any tasks that I set for myself, goes here. T
 
 - [x] Get started on XoshiroRandom  ChaCha toy project 🛫 2025-12-03 ✅ 2025-12-16
 
-- [ ] Finish Implementing ChaCha20 into XoshiroRandom 📅 2026-01-13
-
-- [ ] Enjoy Christmas Break🛫 2025-12-22 📅 2026-01-04
-	- Do some work so we don't just end up forgetting stuff we learned, but also make sure to take time off.
+- [x] Finish Implementing ChaCha20 into XoshiroRandom 📅 2026-01-13 ✅ 2026-05-12
 
 - [ ] Begin getting to work on thesis paper at the latest ⏳ 2026-01-05 🛫 2026-01-13
 	- But do make sure to already do some basic literature research in advance.

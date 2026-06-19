@@ -1,6 +1,5 @@
 ChaCha20](https://cr.yp.to/chacha.html) is a stream cipher based on [Salsa20](https://cr.yp.to/snuffle.html). There's also a nice [wikipedia article](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant) on it. You should read Salsa for background on ChaCha
 
-
 # Salsa
 Salsa20 takes a 256-bit key, and expands it into $2^{64}$ randomly accessible streams that each contain $2^{64}$ randomly accessible 64-byte blocks (512 bit blocks). More precisely:
 - It takes a 256 bit key; defines $2^{64}$ streams
