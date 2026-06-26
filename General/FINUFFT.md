@@ -1,17 +1,3 @@
-Where we want to implement dynamic SIMD dispatch is here:
-https://github.com/flatironinstitute/finufft/blob/193d4f7c2549eab754666c59c419253085beb6e0/src/c_interface.cpp#L127.
-
-You should look at the makefile and `src/Cmakelist.txt`
-
-The main workflow that this file cocerns is generally:
-- Create a plan (finufft_makeplan I think)
-- Pass to finufft_setpts
-- Pass to one finufft_execute
-- Think you also need to call finufft_delete at some point to free memory
-
-Advice would be to expand the *FINUFFT_PLAN_T* template to also be a template on the architecture type besides just the data type. The header for *FINUFFT_PLAN_T* is in in `include/finufft/plan.hpp`, but its constructror source is in `include/finufft/makeplan.hpp`.
-**NOTE** Expected difficulties in `finufft/include/finufft/simd.hpp` will be at line 61, in that you must also account for the architecture being passed because it will otherwise be overriden!
-
 # Build Toolchain
 ## Building
 For *dev* preset, we need **cmake(curses) and ninja.**  For *all* we also need **cudatoolkit**.
@@ -34,6 +20,11 @@ It seems that, besides various language and cuda bindings, there are two ["prima
 - All go through `safe_finufft_call`, which takes a lambda and arguments and perfect forwards those arguments to the lambda: this wrapper ensures the C++ callables are safe to use in C by handling some edge cases and things like exceptions.
 Our main interest is thus the Guru Interface since these are the actual entrypoints into finufft.
 
+## Includes
+The library is designed around the end user including only `include/finufft.h`.
+
+It appears that plan.hpp is deliberatly being kept xsimd-free. Some comments in the codebase mention this too and always mention it is to keep the test headers xsimd-free, though I'm not 100% sure why. Perhaps to sort of "enforce" the xsimd dependency is completely abstracted?
+
 ## XSIMD and SIMD usage in the current codebase
 References to xsimd seem to be made in:
 - include/finufft/{simd, spread, interp}.hpp: various instructions on batches. X
@@ -46,3 +37,18 @@ There is also one instance of an *xsimd::best_arch*, inside find_optimal_simd_wi
 It appears that throughout the code base, currently *xsimd::make_sized_batch* is used in combination with logic to find the largest possible simd size that the host architecture supports, in order to obtain xsimd::batches and other simd info with the appropriate architecture. Notably it appears that *PaddedSIMD*, a type alias set in `simd.hpp` that relies on `make_sized_batch` and some other constexpr function that eventually make use of the aformentioned *xsimd::best_arch* to find the best simd size,  is used at various point in *interp.hpp* and *simd.hpp* to derive the batch type (usually referred to with alias `simd_type`) to be used.  *spread.hpp* also relies on *PaddedSIMD*, as it instead derives `simd_type` from struct `KernelBufferLayout` which is defined in *simd.hpp* again. 
 
 It is also interesting to note that `makeplan.hpp` uses *get_padded_simd_width* to set a variable named `simd_size`, but that variable appears to be unused beyond a debug log message.
+
+## Adding dynamic dispatch
+Where we want to implement dynamic SIMD dispatch is here:
+https://github.com/flatironinstitute/finufft/blob/193d4f7c2549eab754666c59c419253085beb6e0/src/c_interface.cpp#L127.
+
+You should look at the makefile and `src/Cmakelist.txt`
+
+The main workflow that this file cocerns is generally:
+- Create a plan (finufft_makeplan I think)
+- Pass to finufft_setpts
+- Pass to one finufft_execute
+- Think you also need to call finufft_delete at some point to free memory
+
+Advice would be to expand the *FINUFFT_PLAN_T* template to also be a template on the architecture type besides just the data type. The header for *FINUFFT_PLAN_T* is in in `include/finufft/plan.hpp`, but its constructror source is in `include/finufft/makeplan.hpp`.
+**NOTE** Expected difficulties in `finufft/include/finufft/simd.hpp` will be at line 61, in that you must also account for the architecture being passed because it will otherwise be overriden
